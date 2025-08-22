@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html th:replace="~{user/user_base :: parent('Profile',~{:: #div1},~{::#jsScript})}">
+
+<div id="div1">
+
+    <h1>user Dashboard</h1>
+    <p th:if="${user}" th:text="${user.email}">welcome </p>
+
+
+</div>
+<script id="jsScript"></script>
+
+
+</html>`

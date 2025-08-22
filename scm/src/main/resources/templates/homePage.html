@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: parent('HomePage',~{:: #section1})}">
+
+<section id="section1"
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-white dark:from-gray-800 dark:to-gray-900 px-4">
+
+    <h1>User Profile</h1>
+    <p th:if="${user}" th:text="${user.email}">welcome </p>
+</section>
+
+</html>

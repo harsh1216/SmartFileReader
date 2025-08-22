@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html th:fragment="parent(title,content,jsScript)" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"> </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link th:href="@{/css/output.css}" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+
+
+    <div th:replace="/user/user_sideBar :: sideBar"></div>
+    <!-- main Content -->
+    <div th:replace="${content}"></div>
+
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <script src="/js/myScript.js"></script>
+    <script th:replace="${jsScript}">
+    </script>
+</body>
+
+</html>
