@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: parent('HomePage',~{:: #section1})}">
+
+<section id="section1"
+    class="min-h-screen flex flex-col items-center justify-center 
+           bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 px-6">
+
+    <!-- Hero Content -->
+    <div class="text-center max-w-3xl">
+        <!-- App Name -->
+        <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+            Smart File Reader
+        </h1>
+
+        <!-- Tagline -->
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+            Upload, manage, and view your documents seamlessly.  
+            Backed by <span class="font-semibold">AWS S3</span>, <span class="font-semibold">RDS</span>, 
+            and a secure <span class="font-semibold">Spring Boot</span> backend.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/login" 
+               class="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-md 
+                      hover:bg-blue-700 transition font-medium">
+                Login with Local Account
+            </a>
+            <a href="/oauth2/authorization/google" 
+               class="px-6 py-3 bg-red-500 text-white rounded-xl shadow-md 
+                      hover:bg-red-600 transition font-medium">
+                Continue with Google
+            </a>
+            <a href="/oauth2/authorization/github" 
+               class="px-6 py-3 bg-gray-800 text-white rounded-xl shadow-md 
+                      hover:bg-gray-900 transition font-medium">
+                Continue with GitHub
+            </a>
+        </div>
+    </div>
+
+ 
+
+</section>
+</html>

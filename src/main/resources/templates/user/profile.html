@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html th:replace="~{user/user_base :: parent('Profile',~{:: #div1},~{:: #jsScript})}">
+
+<div id="div1" class="p-6 sm:ml-64">
+    <div class="p-6 border border-gray-200 rounded-2xl dark:border-gray-700 mt-14 bg-white dark:bg-gray-900 shadow-md">
+
+        <!-- Profile Header -->
+        <div class="flex items-center space-x-6">
+            <img th:src="${user.profilePic != null && !user.profilePic.isEmpty() ? user.profilePic : '/images/default-avatar.png'}"
+                 alt="Profile Picture"
+                 class="w-28 h-28 rounded-full border-4 border-blue-500 object-cover shadow">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white"
+                    th:text="${user.name != null && !user.name.isEmpty() ? user.name : '-'}">User Name</h2>
+                <p class="text-gray-600 dark:text-gray-400"
+                   th:text="${user.email != null && !user.email.isEmpty() ? user.email : '-'}">user@email.com</p>
+                <p class="text-sm text-green-600 dark:text-green-400 font-medium"
+                   th:if="${user.enabled}">✔ Active</p>
+                <p class="text-sm text-red-600 dark:text-red-400 font-medium"
+                   th:if="${!user.enabled}">❌ Inactive</p>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">About</h3>
+            <p class="mt-2 text-gray-700 dark:text-gray-400"
+               th:text="${user.about != null && !user.about.isEmpty() ? user.about : 'N/A'}">
+                This user has not written anything about themselves yet.
+            </p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
+                <h4 class="text-sm text-gray-500">Phone</h4>
+                <p class="text-gray-800 dark:text-gray-200 font-medium"
+                   th:text="${user.phoneNumber != null && !user.phoneNumber.isEmpty() ? user.phoneNumber : 'N/A'}">
+                    +91 9876543210
+                </p>
+            </div>
+            <div class="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
+                <h4 class="text-sm text-gray-500">Provider</h4>
+                <p class="text-gray-800 dark:text-gray-200 font-medium"
+                   th:text="${user.provider != null ? user.provider : 'N/A'}">SELF</p>
+            </div>
+        </div>
+
+        <!-- Documents Section -->
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Documents</h3>
+            <div th:if="${#lists.isEmpty(user.documents)}" class="text-gray-500 dark:text-gray-400 mt-2">
+                No documents uploaded yet.
+            </div>
+            <ul class="mt-2 space-y-2" th:if="${!#lists.isEmpty(user.documents)}">
+                <li th:each="doc : ${user.documents}" class="p-3 border rounded-md flex justify-between items-center">
+                    <span th:text="${doc.title != null && !doc.title.isEmpty() ? doc.title : 'Untitled'}">Document Name</span>
+                    <a th:href="@{'/user/document/' + ${doc.id}}" 
+                       class="text-blue-600 hover:underline">View</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script id="jsScript"></script>
+</html>
